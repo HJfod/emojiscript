@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'/>
+</head>
+<body>
+<textarea id='code' style='width: 800px; height: 600px; resize: none;'></textarea><textarea id='output' style='width: 500px; height: 500px; resize: none;' disabled></textarea><div id='inputs'></div><br>
+<button onclick='compile()'>compile</button><input type='checkbox' id='show'>Output decoded code</input><br>
+<script>
+let c = document.getElementById('output');
+let inp = document.getElementById('inputs');
+
+function print(text) {
+	c.value = c.value + text + '\n';
+}
+
+
+function compile() {
+	let t = document.getElementById('code').value;
+	
+	t = t.replace(/🔧/g,'function ');
+	t = t.replace(/👆/g,'let ');
+	t = t.replace(/👇/g,'const ');
+	t = t.replace(/🤔/g,'if ');
+	t = t.replace(/😳/g,'else ');
+	t = t.replace(/💡/g,'new ');
+	t = t.replace(/📞/g,'return ');
+	t = t.replace(/👉/g,'=');
+	t = t.replace(/💬/g,'print');
+	t = t.replace(/🤙/g,'while');
+	t = t.replace(/👌/g,'true');
+	t = t.replace(/🤞/g,'false');
+	t = t.replace(/🤝/g,'Promise');
+	t = t.replace(/💕/g,'resolve');
+	t = t.replace(/💔/g,'reject');
+	t = t.replace(/⌛/g,'then');
+	t = t.replace(/🏓/g,'catch');
+	t = t.replace(/👄/g,'alert');
+	t = t.replace(/👂/g,'prompt');
+	t = t.replace(/📰/g,'document');
+	t = t.replace(/🧘/g,'body');
+	t = t.replace(/🔨/g,'createElement');
+	t = t.replace(/🎪/g,'document.getElementById("inputs")');
+	t = t.replace(/⚡/g,'setAttribute');
+	t = t.replace(/🔌/g,'appendChild');
+	t = t.replace(/🎮/g,'onclick');
+	t = t.replace(/🕹/g,'button');
+	t = t.replace(/💭/g,'innerHTML');
+	t = t.replace(/🔬/g,'Math');
+	t = t.replace(/🎲/g,'random');
+	t = t.replace(/🥮/g,'PI');
+	t = t.replace(/🏷/g,"'\\n'");
+	t = t.replace(/🤜/g,'=>');
+	t = t.replace(/🏒/g,',');
+	t = t.replace(/🔗/g,'.');
+	t = t.replace(/👎/g,'-');
+	t = t.replace(/👍/g,'+');
+	t = t.replace(/🍁/g,'{');
+	t = t.replace(/🍀/g,'}');
+	t = t.replace(/🍂/g,'(');
+	t = t.replace(/🍃/g,')');
+	t = t.replace(/🖔/g,'>');
+	t = t.replace(/✌/g,'<');
+	t = t.replace(/🤘/g,':');
+	t = t.replace(/🛑/g,';');
+	t = t.replace(/🔥/g,'!');
+	t = t.replace(/🎶/g,'"');
+	t = t.replace(/🎵/g,"'");
+	t = t.replace(/🍞/g,'gvn0');
+	t = t.replace(/🍔/g,'gvn1');
+	t = t.replace(/🧀/g,'gvn2');
+	t = t.replace(/🍗/g,'gvn3');
+	t = t.replace(/🌭/g,'gvn4');
+	t = t.replace(/😎/g,'gfn0');
+	t = t.replace(/😇/g,'gfn1');
+	t = t.replace(/😛/g,'gfn2');
+	
+	c.value = '';
+	while (inp.firstChild) {
+		inp.removeChild(inp.firstChild);
+	}
+	
+	if (document.getElementById('show').checked){
+		print(t);
+	}else{
+		eval(t);
+	}
+}
+</script>
+</body>
+</html>
